@@ -1,0 +1,533 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,35508,59672,72717,e=> {
+"use strict";
+var t=e.i(56242),r=e.i(59163),n=e.i(76920);
+let u=(0,r.createContext)(null);
+e.s(["DeprecatedLayoutGroupContext",0,u],59672);
+var l=e.i(46563),o=e.i(56927);
+function i() {
+let e,t=(e=(0,r.useRef)(!1),(0,l.useIsomorphicLayoutEffect)(()=>(e.current=!0,()=> {
+e.current=!1
+}
+),[]),e),[n,u]=(0,r.useState)(0),i=(0,r.useCallback)(()=> {
+t.current&&u(n+1)
+}
+,[n]);
+return[(0,r.useCallback)(()=>o.frame.postRender(i),[i]),n]
+}
+e.s(["useForceUpdate",0,i],72717);
+let a=e=>!e.isLayoutDirty&&e.willUpdate(!1);
+e.s(["LayoutGroup",0,( {
+children:e,id:l,inherit:o=!0
+}
+)=> {
+let s=(0,r.useContext)(n.LayoutGroupContext),c=(0,r.useContext)(u),[f,d]=i(),h=(0,r.useRef)(null),p=s.id||c;
+if(null===h.current) {
+let e,t,r,n;
+(!0==(!0===(n=o))||"id"===n)&&p&&(l=l?p+"-"+l:p),h.current= {
+id:l,group:!0===o&&s.group||(e=new Set,t=new WeakMap, {
+add:n=> {
+e.add(n),t.set(n,n.addEventListener("willUpdate",r))
+}
+,remove:n=> {
+e.delete(n);
+let u=t.get(n);
+u&&(u(),t.delete(n)),r()
+}
+,dirty:r=()=>e.forEach(a)
+}
+)
+}
+
+}
+let m=(0,r.useMemo)(()=>( {
+...h.current,forceRender:f
+}
+),[d]);
+return(0,t.jsx)(n.LayoutGroupContext.Provider, {
+value:m,children:e
+}
+)
+}
+],35508)
+}
+,95814,e=> {
+"use strict";
+var t=e.i(59163),r=e.i(69718),n=e.i(56927);
+e.s(["useAnimationFrame",0,function(e) {
+let u=(0,t.useRef)(0), {
+isStatic:l
+}
+=(0,t.useContext)(r.MotionConfigContext);
+(0,t.useEffect)(()=> {
+if(l)return;
+let t=( {
+timestamp:t,delta:r
+}
+)=> {
+u.current||(u.current=t),e(t-u.current,r)
+}
+;
+return n.frame.update(t,!0),()=>(0,n.cancelFrame)(t)
+}
+,[e])
+}
+])
+}
+,72651,e=> {
+"use strict";
+var t=e.i(22307),r=e.i(1332),n=e.i(56927);
+e.s(["useVelocity",0,function(e) {
+let u=(0,r.useMotionValue)(e.getVelocity()),l=()=> {
+let t=e.getVelocity();
+u.set(t),t&&n.frame.update(l)
+}
+;
+return(0,t.useMotionValueEvent)(e,"change",()=> {
+n.frame.update(l,!1,!0)
+}
+),u
+}
+])
+}
+,7611,34673,e=> {
+"use strict";
+var t=e.i(76791),r=e.i(59163);
+function n(e) {
+return(0,r.useEffect)(()=>()=>e(),[])
+}
+e.s(["useUnmountEffect",0,n],34673);
+var u=e.i(83592);
+e.s(["useAnimate",0,function() {
+let e=(0,t.useConstant)(()=>( {
+current:null,animations:[]
+}
+)),r=(0,t.useConstant)(()=>(0,u.createScopedAnimate)(e));
+return n(()=> {
+e.animations.forEach(e=>e.stop())
+}
+),[e,r]
+}
+],7611)
+}
+,3412,e=> {
+"use strict";
+var t=e.i(59163),r=e.i(74602);
+e.s(["usePresenceData",0,function() {
+let e=(0,t.useContext)(r.PresenceContext);
+return e?e.custom:void 0
+}
+])
+}
+,65883,(e,t,r)=> {
+"use strict";
+Object.defineProperty(r,"__esModule", {
+value:!0
+}
+),Object.defineProperty(r,"BailoutToCSR", {
+enumerable:!0,get:function() {
+return u
+}
+
+}
+);
+let n=e.r(22075);
+function u( {
+reason:e,children:t
+}
+) {
+if("u"<typeof window)throw Object.defineProperty(new n.BailoutToCSRError(e),"__NEXT_ERROR_CODE", {
+value:"E394",enumerable:!1,configurable:!0
+}
+);
+return t
+}
+
+}
+,96614,(e,t,r)=> {
+"use strict";
+function n(e) {
+return e.split("/").map(e=>encodeURIComponent(e)).join("/")
+}
+Object.defineProperty(r,"__esModule", {
+value:!0
+}
+),Object.defineProperty(r,"encodeURIPath", {
+enumerable:!0,get:function() {
+return n
+}
+
+}
+)
+}
+,29425,(e,t,r)=> {
+"use strict";
+Object.defineProperty(r,"__esModule", {
+value:!0
+}
+),Object.defineProperty(r,"PreloadChunks", {
+enumerable:!0,get:function() {
+return a
+}
+
+}
+);
+let n=e.r(56242),u=e.r(70813),l=e.r(68217),o=e.r(96614),i=e.r(91460);
+function a( {
+moduleIds:e
+}
+) {
+if("u">typeof window)return null;
+let t=l.workAsyncStorage.getStore();
+if(void 0===t)return null;
+let r=[];
+if(t.reactLoadableManifest&&e) {
+let n=t.reactLoadableManifest;
+for(let t of e) {
+if(!n[t])continue;
+let e=n[t].files;
+r.push(...e)
+}
+
+}
+if(0===r.length)return null;
+let s=(0,i.getAssetTokenQuery)();
+return(0,n.jsx)(n.Fragment, {
+children:r.map(e=> {
+let r=`${t.assetPrefix}/_next/${(0,o.encodeURIPath)(e)}${s}`;
+return e.endsWith(".css")?(0,n.jsx)("link", {
+precedence:"dynamic",href:r,rel:"stylesheet",as:"style",nonce:t.nonce
+}
+,e):((0,u.preload)(r, {
+as:"script",fetchPriority:"low",nonce:t.nonce
+}
+),null)
+}
+)
+}
+)
+}
+
+}
+,41228,(e,t,r)=> {
+"use strict";
+Object.defineProperty(r,"__esModule", {
+value:!0
+}
+),Object.defineProperty(r,"default", {
+enumerable:!0,get:function() {
+return s
+}
+
+}
+);
+let n=e.r(56242),u=e.r(59163),l=e.r(65883),o=e.r(29425);
+function i(e) {
+return {
+default:e&&"default"in e?e.default:e
+}
+
+}
+let a= {
+loader:()=>Promise.resolve(i(()=>null)),loading:null,ssr:!0
+}
+,s=function(e) {
+let t= {
+...a,...e
+}
+,r=(0,u.lazy)(()=>t.loader().then(i)),s=t.loading;
+function c(e) {
+let i=s?(0,n.jsx)(s, {
+isLoading:!0,pastDelay:!0,error:null
+}
+):null,a=!t.ssr||!!t.loading,c=a?u.Suspense:u.Fragment,f=t.ssr?(0,n.jsxs)(n.Fragment, {
+children:["u"<typeof window?(0,n.jsx)(o.PreloadChunks, {
+moduleIds:t.modules
+}
+):null,(0,n.jsx)(r, {
+...e
+}
+)]
+}
+):(0,n.jsx)(l.BailoutToCSR, {
+reason:"next/dynamic",children:(0,n.jsx)(r, {
+...e
+}
+)
+}
+);
+return(0,n.jsx)(c, {
+...a? {
+fallback:i
+}
+: {
+
+}
+,children:f
+}
+)
+}
+return c.displayName="LoadableComponent",c
+}
+
+}
+,18798,(e,t,r)=> {
+"use strict";
+Object.defineProperty(r,"__esModule", {
+value:!0
+}
+),Object.defineProperty(r,"default", {
+enumerable:!0,get:function() {
+return u
+}
+
+}
+);
+let n=e.r(81258)._(e.r(41228));
+function u(e,t) {
+let r= {
+
+}
+;
+"function"==typeof e&&(r.loader=e);
+let u= {
+...r,...t
+}
+;
+return(0,n.default)( {
+...u,modules:u.loadableGenerated?.modules
+}
+)
+}
+("function"==typeof r.default||"object"==typeof r.default&&null!==r.default)&&void 0===r.default.__esModule&&(Object.defineProperty(r.default,"__esModule", {
+value:!0
+}
+),Object.assign(r.default,r),t.exports=r.default)
+}
+,41167,63429,e=> {
+"use strict";
+var t=e.i(18798);
+let r=( {
+children:e
+}
+)=>e,n=(0,t.default)(()=>Promise.resolve(r), {
+ssr:!1
+}
+);
+e.s(["Client",0,n],41167);
+var u=e.i(56242);
+e.i(48490);
+var l=e.i(40097),o=e.i(7284),i=e.i(95814),a=e.i(87648),s=e.i(69235),c=e.i(59163),f=e.i(44440);
+let d= {
+SPAWN_INTERVAL_MS:900,INITIAL_WIDTH_RATIO:.3,INITIAL_HEIGHT_RATIO:.2,DEFAULT_EXAGGERATION:1.5,GROWTH_RATE_WIDTH:1.003,GROWTH_RATE_HEIGHT:1.0035,MOUSE_SMOOTHING:.15,MAX_SIZE_MULTIPLIER:4,FADE_IN_DURATION:30,COLOR_CYCLE_SPEED:120
+}
+,h= {
+NUM_LAYERS:250,SCALE_FACTOR:.99,MAX_WIDTH_MULTIPLIER:4.5,MAX_HEIGHT_MULTIPLIER:4.2,TIME_SCALE:.007,FLOW_MULTIPLIER:5.5,EXAGGERATION:1
+}
+;
+var p=e.i(50660),m=e.i(30397);
+let y=(0,p.cubicBezier)(...m.eases.IN_OUT_QUINT),g=(e,t,r)=>e>Math.max(.5*r.width,600)?1:(0,f.rangeMap)(t,.5*r.height,.6*r.height,0,1,!0);
+var _=e.i(4812);
+let w=new Map([["layered",function(e,t, {
+smoothMouse:r,frame:n,baseColors:u
+}
+) {
+let {
+NUM_LAYERS:l,SCALE_FACTOR:o,MAX_WIDTH_MULTIPLIER:i,MAX_HEIGHT_MULTIPLIER:a,TIME_SCALE:s,FLOW_MULTIPLIER:c,EXAGGERATION:d
+}
+=h,p=t.width*i,m=t.height*a,y=n*s;
+e.clearRect(0,0,t.width,t.height);
+let g=[];
+for(let e=0;
+e<l;
+e++) {
+let t=e/(l-1)*c+y,r=Math.floor(t)%u.length,n=(r+1)%u.length,o=t%1,i=(0,f.lerpColor)(u[r],u[n],o);
+g.push(i)
+}
+let _=t.width/2,w=t.height/2,R=(r.x-_)*d,M=(r.y-w)*d,x=_+R,E=w+M;
+for(let t=0;
+t<l;
+t++) {
+let r=t/(l-1),n=(0,f.lerp)(x,_,r),u=(0,f.lerp)(E,w,r),i=p*Math.pow(o,t),a=m*Math.pow(o,t),s=n-i/2,c=u-a/2,d=g[t];
+e.fillStyle=`rgba(${d.r}, ${d.g}, ${d.b}, ${d.a/255})`,e.fillRect(s,c,i,a)
+}
+
+}
+],["squares",function(e,t, {
+smoothMouse:r,frame:n,baseColors:u,rects:l
+}
+) {
+let {
+SPAWN_INTERVAL_MS:o,INITIAL_WIDTH_RATIO:i,INITIAL_HEIGHT_RATIO:a,GROWTH_RATE_WIDTH:s,GROWTH_RATE_HEIGHT:c,COLOR_CYCLE_SPEED:h,FADE_IN_DURATION:p,MAX_SIZE_MULTIPLIER:m,DEFAULT_EXAGGERATION:y
+}
+=d, {
+width:g,height:_
+}
+=t,w=g/2,R=_/2,M=(r.x-w)*y,x=(r.y-R)*y,E=w+M,v=R+x;
+n%50==0&&l.unshift( {
+w:g*i,h:_*a,x:w,y:R,tOffset:n
+}
+);
+let C=[];
+l.forEach(e=> {
+e.w*=s,e.h*=c;
+let t=(0,f.rangeMap)(e.w,.4*g,3*g,0,1,!0);
+e.x=(0,f.lerp)(w,E,t),e.y=(0,f.lerp)(R,v,t);
+let r=(n-e.tOffset)/h,l=u.length,o=Math.floor(r)%l;
+o<0&&(o+=l);
+let i=(o+1)%l,a=u[o],d=u[i],m=(0,f.lerpColor)(a,d,r%1),y=Math.min((n-e.tOffset)/p,1);
+C.push( {
+r:e,col:m,appearT:y
+}
+)
+}
+),e.clearRect(0,0,g,_),e.lineWidth=1.5,C.forEach(( {
+r:t,col:r,appearT:n
+}
+)=> {
+n>.01&&(e.strokeStyle=`rgba(${r.r}, ${r.g}, ${r.b}, ${r.a/255*n})`,e.strokeRect(t.x-t.w/2,t.y-t.h/2,t.w,t.h))
+}
+),e.lineWidth=1.5;
+let b=l.filter(e=>e.w<=g*m);
+l.length=0,l.push(...b)
+}
+],["squares-upwards",function(e,t, {
+frame:r,scrollY:n
+}
+) {
+let {
+width:u,height:l
+}
+=t,o=u>768,i=o?30:15,a= {
+X:.0715*u,Y_SMALL:.066*l,Y_BIG:.275*l
+}
+,s= {
+Y:.383*l
+}
+,c=a.X-.5*i,d=u-a.X-.5*i;
+e.clearRect(0,0,u,l);
+for(let u=0;
+u<5;
+u++)for(let h=0;
+h<8;
+h++) {
+let p=(0,f.rangeMap)(u,0,4,c,d,!0),m=u%2==0,_=m?a.Y_SMALL:a.Y_BIG,w=s.Y*h,R=s.Y*(m?3:2),M=_+w-function(e,t=30,r=0) {
+let n=t+r,u=Math.floor(e/n),l=e%n;
+return u+(l<t?y(l/t):1)
+}
+(.1*r+(0,f.rangeMap)(u,0,4,.75,0))*R%R;
+M<l+i&&M>-i&&(e.globalAlpha=g(p,o?M-n:M,t),e.fillStyle="white",e.fillRect(p,M,i,i))
+}
+
+}
+]]);
+e.s(["Canvas",0,( {
+targetRef:e,variant:t="layered",className:r="",useTrackMouse:n=!0,...h
+}
+)=> {
+let[p,m]=(0,l.useRect)(),y=(0,c.useRef)(null),g=(0,a.useInView)(e||y), {
+scrollY:R
+}
+=(0,s.useScroll)(),M=(0,c.useRef)([]),x=(0,c.useRef)(0),E=(0,c.useRef)([]),v=(0,c.useMemo)(()=>w.get(t),[t]), {
+mouseState:C,hasStarted:b,updateSmoothMouse:O,isClientRef:I
+}
+=((e,t=!0)=> {
+let r=(0,c.useRef)( {
+raw: {
+x:0,y:0
+}
+,smooth: {
+x:0,y:0
+}
+
+}
+),[n,u]=(0,c.useState)(!t),l=(0,c.useRef)(!1),o=(0,_.useWindowSize)(),i=(0,c.useCallback)(l=> {
+if(!e||!t)return;
+let i=Math.max(0,Math.min(1,l.clientX/o.width)),a=Math.max(0,Math.min(1,l.clientY/o.height));
+r.current.raw.x=e.width*i,r.current.raw.y=e.height*a,n||u(!0)
+}
+,[e,n,t,o.width,o.height]);
+(0,c.useEffect)(function() {
+if(l.current=!0,e) {
+let t=e.width/2,n=e.height/2;
+r.current.raw.x=t,r.current.raw.y=n,r.current.smooth.x=t,r.current.smooth.y=n
+}
+
+}
+,[e]),(0,c.useEffect)(function() {
+if(l.current&&t)return window.addEventListener("mousemove",i, {
+passive:!0
+}
+),()=> {
+window.removeEventListener("mousemove",i)
+}
+
+}
+,[i,t]);
+let a=(0,c.useCallback)(()=> {
+r.current.smooth.x=(0,f.lerp)(r.current.smooth.x,r.current.raw.x,d.MOUSE_SMOOTHING),r.current.smooth.y=(0,f.lerp)(r.current.smooth.y,r.current.raw.y,d.MOUSE_SMOOTHING)
+}
+,[]);
+return {
+mouseState:r,hasStarted:n,updateSmoothMouse:a,isClientRef:l
+}
+
+}
+)(m,n),T=(0,c.useCallback)(t=> {
+p(t),e||(y.current=t)
+}
+,[p,e]), {
+ctx:A,setCanvasRef:L
+}
+=((e,t= {
+
+}
+)=> {
+let {
+onResize:r=null,threshold:n=1
+}
+=t,u=(0,c.useMemo)(()=>window.devicePixelRatio||1,[]),l=(0,c.useRef)(null),o=(0,c.useRef)(null);
+return(0,c.useEffect)(function() {
+let t=l.current;
+t&&e&&(o.current=t.getContext("2d"))
+}
+,[]),(0,c.useEffect)(function() {
+l.current.width=e.width*u,l.current.height=e.height*u,r?.()
+}
+,[e.width,e.height]), {
+canvasRef:l,ctx:o.current,setCanvasRef:e=> {
+l.current=e,e&&(o.current=e.getContext("2d"))
+}
+
+}
+
+}
+)(m, {
+threshold:1,onResize:(0,c.useCallback)(()=> {
+M.current="squares"===t?f.CANVAS_COLORS.extended:f.CANVAS_COLORS.primary,w.has(t)||console.warn(`Unknown animation variant: "${t}". Falling back to "layered".`)
+}
+,[t])
+}
+);
+return(0,i.useAnimationFrame)(()=> {
+if(!g||!b||!I.current||!m)return;
+O();
+let e= {
+smoothMouse:C.current.smooth,frame:x.current,baseColors:M.current,rects:E.current,scrollY:R.get()
+}
+,t=window.devicePixelRatio||1;
+A.setTransform(t,0,0,t,0,0),v(A,m,e),x.current++
+}
+),(0,u.jsx)("div", {
+ref:T,className:"absolute inset-0 size-full",style: {
+visibility:b?"visible":"hidden",pointerEvents:n?"auto":"none"
+}
+,children:(0,u.jsx)("canvas", {
+ref:L,className:(0,o.default)("pointer-events-none size-full",r),...h
+}
+)
+}
+)
+}
+],63429)
+}
+]);
